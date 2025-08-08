@@ -22,8 +22,6 @@ public class LoanApplicationRequest {
     private String nationalId;
 
     @NotNull(message = "Loan amount is required")
-    @DecimalMin(value = "50000.00", message = "Loan amount must be at least KES 50,000")
-    @DecimalMax(value = "100000000.00", message = "Loan amount cannot exceed KES 100,000,000")
     private BigDecimal loanAmount;
 
     @Size(max = 255, message = "Loan purpose cannot exceed 255 characters")

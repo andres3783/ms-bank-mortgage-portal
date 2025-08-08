@@ -44,7 +44,7 @@ public class ApplicationService {
 
     private final MessageSender sender;
     ObjectMapper mapper = new ObjectMapper();
-    public ApplicationResponseDto createApplication(@Valid LoanApplicationRequest request, Authentication authentication) throws JsonProcessingException {
+    public ApplicationResponseDto createApplication(@Valid LoanApplicationRequest request, Authentication authentication) {
         log.info("Creating application for user: {}", authentication.getName());
 
         // Find user by authentication username
@@ -79,7 +79,7 @@ public class ApplicationService {
     }
 
 
-    public ApplicationResponseDto updateApplication(UUID id, @Valid DecisionDto request, Authentication auth) throws JsonProcessingException {
+    public ApplicationResponseDto updateApplication(UUID id, @Valid DecisionDto request, Authentication auth)  {
         Application application = applicationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Application not found"));
 
@@ -98,7 +98,7 @@ public class ApplicationService {
 
 
 
-    public void deleteApplication(UUID id, Authentication auth) throws JsonProcessingException {
+    public void deleteApplication(UUID id, Authentication auth)  {
         Application application = applicationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Application not found"));
 
